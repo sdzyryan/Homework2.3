@@ -1,4 +1,4 @@
-public class Vehicle {
+public abstract class Vehicle implements Transport{
     private final String modelName;
     private final int wheelsCount;
 
@@ -7,23 +7,8 @@ public class Vehicle {
         this.wheelsCount = wheelsCount;
     }
 
-    public void service() {
-        System.out.println("Обслуживаем " + getModelName());
-        updateTyre();
-          }
-
     public void updateTyre() {
-        for (int i = 0; i < wheelsCount; i++) {
-            System.out.println("Меняем покрышку");
-        }
-    }
-
-    public void checkEngine() {
-        System.out.println("Проверяем двигатель");
-    }
-
-    public void checkTrailer() {
-        System.out.println("Проверяем прицеп");
+            System.out.println("   Меняем покрышку");
     }
 
     public void separator() {
@@ -38,4 +23,11 @@ public class Vehicle {
         return wheelsCount;
     }
 
+    @Override
+    public void service() {
+        System.out.println("Обслуживаем " + modelName + ":");
+        for (int i = 0; i < wheelsCount; i++) {
+            updateTyre();
+        }
+    }
 }
